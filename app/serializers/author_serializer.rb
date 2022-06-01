@@ -1,10 +1,10 @@
 class AuthorSerializer < ActiveModel::Serializer
   attributes :name  #author :name by default
 
-  has_one :profile  #see filtering in profile serializer
-  has_many :posts, serializer: AuthorPostSerializer #extra layer of filtering, we added some logic to display a shortened set of content
+  has_one :profile  #displays the 'profile' object based on its serializer criteria
+  has_many :posts, serializer: AuthorPostSerializer #displays the 'posts' object based the criteria set inside the AuthorPostSerializer
   
 
-  # it appears the order of operations on an '/authors' route is:
-  # author_controller fires => author_serializer => profile_serializer => posts_serializer (extra serializer to filter post data) 
+  # it appears the order of operations on an '/authors' index and show routes are:
+  # author_controller fires => author_serializer => profile_serializer => posts_serializer but as the AuthorPostSerializer
 end

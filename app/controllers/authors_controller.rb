@@ -3,7 +3,7 @@ class AuthorsController < ApplicationController
 
   def index
     authors = Author.all 
-    render json: authors, include: ['posts', 'profile', 'posts.tags'] #include as nested objects
+    render json: authors, include: ['posts', 'profile', 'posts.tags'] #allow these deeply nested objects, serializer cannot handle more than 1 level deep
   end
 
   def show
